@@ -1,14 +1,14 @@
 {
   "name": "api-tebex",
-  "version": "0.1.0",
+  "version": "0.1.8",
   "description": "",
-  "main": "index.js",
-  "types": "./typings/index.d.ts",
+  "main": "node.js",
+  "typings": "node.d.ts",
   "scripts": {
     "build": "yarn clean:dist && webpack",
     "build:docs": "yarn clean:docs && jsdoc -c .jsdoc.json",
     "clean": "yarn clean:dist && yarn clean:docs",
-    "clean:dist": "rimraf web.js web.js.map node.js node.js.map web-dev.js web-dev.js.map node-dev.js node-dev.js.map",
+    "clean:dist": "rimraf node.js node.js.map node-dev.js node-dev.js.map",
     "clean:docs": "rimraf docs",
     "ci": "yarn clean && yarn lint && yarn test && yarn build && yarn build:docs",
     "lint": "eslint tests/**/*.js lib/**/*.js",
@@ -17,8 +17,33 @@
     "test": "jest lib",
     "test:integration": "jest tests --coverage=false"
   },
+  "files": [
+    "node.js",
+    "node-dev.js",
+    "node.d.ts"
+  ],
+  "keywords": [
+    "api",
+    "api-client",
+    "tebex",
+    "tebex-api",
+    "fivem",
+    "fivem-api",
+    "minecraft",
+    "minecraft-api"
+  ],
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "author": "pichotm",
   "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PichotM/api-tebex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PichotM/api-tebex/issues"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",

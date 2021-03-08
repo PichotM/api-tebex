@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // Manual tests
-const { TebexInstance } = require('../dist/node-dev');
+const { TebexInstance } = require('../web-dev');
 
 const server = new TebexInstance(process.ENV.TEBEX_SECRET_KEY, { timeout: 5000 });
 const run = async () => {

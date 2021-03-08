@@ -39,8 +39,8 @@ declare module 'api-tebex' {
     }
 
     class Packages extends ApiEndpoint {
-        all(): Package[];
-        retrieve(id: string): Package;
+        all(): Promise<Package[]>;
+        retrieve(id: string): Promise<Package>;
     }
 
     export interface Currency {
@@ -73,8 +73,8 @@ declare module 'api-tebex' {
     }
 
     class Payments extends ApiEndpoint {
-        all(limit?: number): Payment[];
-        retrieve(transactionId: string): Payment;
+        all(limit?: number): Promise<Payment[]>;
+        retrieve(transactionId: string): Promise<Payment>;
     }
 
     export interface PlayerPayment {
@@ -93,7 +93,7 @@ declare module 'api-tebex' {
     }
 
     class Players extends ApiEndpoint {
-        retrieve(user: string): PlayerInfo;
+        retrieve(user: string): Promise<PlayerInfo>;
     }
 
     export interface WebstoreInformation {
@@ -132,10 +132,10 @@ declare module 'api-tebex' {
     }
 
     class Server extends ApiEndpoint {
-        information(): WebstoreInformation;
-        communityGoals(): WebstoreCommunityGoal[];
-        communityGoal(id: number): WebstoreCommunityGoal;
-        sales(): Sales[];
+        information(): Promise<WebstoreInformation>;
+        communityGoals(): Promise<WebstoreCommunityGoal[]>;
+        communityGoal(id: number): Promise<WebstoreCommunityGoal>;
+        sales(): Promise<Sales[]>;
     }
 
     interface TebexInstanceOptions {
@@ -143,7 +143,7 @@ declare module 'api-tebex' {
         pluginUrl?: string;
     }
 
-    export default class TebexInstance {
+    export class TebexInstance {
         constructor(apiKey: string, options?: TebexInstanceOptions);
         private axiosInstance: AxiosInstance;
 

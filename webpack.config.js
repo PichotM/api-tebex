@@ -13,7 +13,7 @@ const baseConfig = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: __dirname,
         library: 'api-tebex',
         globalObject: 'this',
         libraryTarget: 'umd'
@@ -24,18 +24,6 @@ const baseConfig = {
 };
 
 module.exports = [
-    _.merge({}, baseConfig, {
-        output: {
-            filename: 'web.js'
-        },
-        mode: 'production',
-        devtool: undefined,
-    }),
-    _.merge({}, baseConfig, {
-        output: {
-            filename: 'web-dev.js'
-        }
-    }),
     _.merge({}, baseConfig, {
         output: {
             filename: 'node.js'

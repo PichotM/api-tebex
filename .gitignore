@@ -4,3 +4,10 @@ yarn.lock
 package-lock.json
 yarn.lock
 node_modules/
+
+*.map
+node.js
+node-dev.js
+web.js
+web-dev.js
+yarn-error.log
