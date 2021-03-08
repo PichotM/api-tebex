@@ -1,0 +1,17 @@
+{
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "source": {
+        "include": [
+            "lib"
+        ],
+        "excludePattern": ".+\\.(test|stubs).js(x|doc)?$"
+    },
+    "opts": {
+        "destination": "docs",
+        "readme": "README.md",
+        "recurse": true,
+        "template": "node_modules/@pixi/jsdoc-template"
+    }
+}

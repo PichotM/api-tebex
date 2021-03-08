@@ -1,0 +1,50 @@
+{
+  "name": "api-tebex",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "types": "./typings/index.d.ts",
+  "scripts": {
+    "build": "yarn clean:dist && webpack",
+    "build:docs": "yarn clean:docs && jsdoc -c .jsdoc.json",
+    "clean": "yarn clean:dist && yarn clean:docs",
+    "clean:dist": "rimraf web.js web.js.map node.js node.js.map web-dev.js web-dev.js.map node-dev.js node-dev.js.map",
+    "clean:docs": "rimraf docs",
+    "ci": "yarn clean && yarn lint && yarn test && yarn build && yarn build:docs",
+    "lint": "eslint tests/**/*.js lib/**/*.js",
+    "prepublishOnly": "yarn build",
+    "serve:docs": "yarn build:docs && http-server ./docs -c-1",
+    "test": "jest lib",
+    "test:integration": "jest tests --coverage=false"
+  },
+  "author": "pichotm",
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/runtime": "^7.11.2",
+    "@pixi/jsdoc-template": "^2.6.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "26.3.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jsdoc": "^30.6.3",
+    "http-server": "^0.12.3",
+    "jest": "26.4.2",
+    "jsdoc": "^3.6.6",
+    "jsdoc-to-markdown": "^7.0.0",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
