@@ -74,7 +74,7 @@ declare module 'api-tebex' {
 
     class Payments extends ApiEndpoint {
         all(limit?: number): Promise<Payment[]>;
-        retrieve(transactionId: string): Promise<Payment>;
+        retrieve(transactionId: string): Promise<Transaction>;
     }
 
     export interface PlayerPayment {
