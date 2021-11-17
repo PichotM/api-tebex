@@ -138,6 +138,15 @@ declare module 'api-tebex' {
         sales(): Promise<Sales[]>;
     }
 
+    export interface CheckoutCart {
+        url: string;
+        expires: Date;
+    }
+    
+    class Checkout extends ApiEndpoint {
+        create(packageID: string, username: string): Promise<CheckoutCart>
+    }
+    
     interface TebexInstanceOptions {
         timeout?: number;
         pluginUrl?: string;
@@ -151,5 +160,6 @@ declare module 'api-tebex' {
         public payments: Payments;
         public players: Players;
         public packages: Packages;
+        public checkout: Checkout;
     }
 }
