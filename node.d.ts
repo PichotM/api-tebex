@@ -146,6 +146,62 @@ declare module 'api-tebex' {
     class Checkout extends ApiEndpoint {
         create(packageID: string, username: string): Promise<CheckoutCart>
     }
+
+    export interface Coupon {
+        id: number;
+        code: string;
+        effective: {
+            type: string;
+            packages: number[];
+            categories: number[];
+        };
+        discount: {
+            type: string;
+            percentage: number;
+            value: number;
+        };
+        expire: {
+            redeemUnlimited: boolean;
+            expireNever: boolean;
+            limit: number;
+            date: Date;
+        };
+        basketType: string;
+        startDate: Date;
+        userLimit: number;
+        minimum: number;
+        username: string;
+        note: string;
+    }
+    export enum CreateCouponDiscountAppMethod {
+        APPLY_TO_EACH_PACKAGE,
+        APPLY_TO_BASKET_BEFORE_SALES,
+        APPLY_TO_BASKET_AFTER_SALES
+    }
+
+    class Coupons extends ApiEndpoint {
+        retrieve(couponID: string): Promise<Coupon>;
+        all(): Promise<Coupon[]>;
+        create(
+            code?: string,
+            effectiveOn?: 'package' | 'category' | 'cart',
+            packages?: number[],
+            categories?: number[],
+            discountType?: 'value' | 'percentage',
+            discountAmount?: number,
+            discountPercentage?: number,
+            discountApplicationMethod?: CreateCouponDiscountAppMethod,
+            redeemUnlimited?: boolean,
+            expireNever?: boolean,
+            expireLimit?: number,
+            expireDate?: string,
+            startDate?: string,
+            basketType?: "single" | "subscription" | "both",
+            minimum?: number,
+            username?: string,
+            note?: string,
+        ): Promise<Coupon>;
+    }
     
     interface TebexInstanceOptions {
         timeout?: number;
@@ -161,5 +217,6 @@ declare module 'api-tebex' {
         public players: Players;
         public packages: Packages;
         public checkout: Checkout;
+        public coupons: Coupons;
     }
 }
