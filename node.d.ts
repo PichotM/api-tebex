@@ -92,8 +92,19 @@ declare module 'api-tebex' {
         purchaseTotals: { [currency: string]: number };
     }
 
+    export type PlayerPackages = {
+        txn_id: string,
+        date: Date,
+        quantity: number,
+        package: {
+            id: number,
+            name: string
+        }
+    }[]
+
     class Players extends ApiEndpoint {
-        retrieve(user: string): Promise<PlayerInfo>;
+        retrieve(user: number | string): Promise<PlayerInfo>;
+        packages(user: number | string): Promise<PlayerPackages[]>
     }
 
     export interface WebstoreInformation {
