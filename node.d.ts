@@ -104,7 +104,7 @@ declare module 'api-tebex' {
 
     class Players extends ApiEndpoint {
         retrieve(user: number | string): Promise<PlayerInfo>;
-        packages(user: number | string): Promise<>
+        packages(user: number | string): Promise<PlayerPackages[]>
     }
 
     export interface WebstoreInformation {
