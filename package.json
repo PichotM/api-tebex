@@ -1,6 +1,6 @@
 {
   "name": "api-tebex",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A node.js library for interacting with the Tebex API",
   "main": "node.js",
   "typings": "node.d.ts",
