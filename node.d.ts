@@ -38,9 +38,36 @@ declare module 'api-tebex' {
         variableGiftcard: number;
     }
 
+    export interface ListingPackage {
+        id: number;
+        order: number;
+        name: string;
+        price: string;
+        discounted_price: string;
+        image: string | false;
+        sale: {
+            active: boolean;
+            discount: number;
+        }
+    }
+
+    export interface ListingCategory {
+        id: number;
+        order: number;
+        name: string;
+        only_subcategories: boolean;
+        subcategories: any[];
+        packages: ListingPackage[];
+    }
+
+    export interface Listing {
+        categories: ListingCategory[]
+    }
+
     class Packages extends ApiEndpoint {
         all(): Promise<Package[]>;
         retrieve(id: string): Promise<Package>;
+        listing(): Promise<Listing>;
     }
 
     export interface Currency {
